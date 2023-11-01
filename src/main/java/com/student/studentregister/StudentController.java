@@ -74,7 +74,7 @@ public class StudentController implements StudentInterface{
         } else {
             String temporaryPassword = firstName + "*" + birthYear;
             setPassword(temporaryPassword);
-            messageLabel.setText("Welcome, " + firstName + "!");
+            messageLabel.setText("Welcome, " + firstName + " "+lastName + "!");
         }
     }
 
