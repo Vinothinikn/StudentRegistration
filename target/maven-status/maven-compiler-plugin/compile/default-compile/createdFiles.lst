@@ -1,0 +1,4 @@
+com\student\studentregisterinterface\StudentInterface.class
+com\student\studentregister\App.class
+com\student\studentregister\StudentController.class
+com\student\studentregister\SecondaryController.class
