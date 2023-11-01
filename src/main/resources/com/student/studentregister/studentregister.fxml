@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.studentregister.StudentController">
+  <children>
+      <HBox alignment="CENTER_LEFT" spacing="60" >
+         <Label text="First Name:" />
+         <TextField fx:id="firstNameField" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="60">
+         <Label text="Last Name:" />
+         <TextField fx:id="lastNameField" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="50">
+         <Label text="Year of Birth:" />
+         <TextField fx:id="birthYearField" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="5">
+         <Label text="Temporary Password:" />
+         <TextField fx:id="passwordField" editable="false" />
+      </HBox>
+       <Label fx:id="messageLabel" text="" />
+      <HBox alignment="CENTER_RIGHT" spacing="10">
+         <Button fx:id="registerButton" text="Register" onAction="#register" />
+         <Button fx:id="exitButton" text="Exit" onAction="#exit" />
+      </HBox>
+      
+   </children>
+   
+   <padding>
+      <Insets bottom="25" left="25" right="25" top="25" />
+   </padding>
+</VBox>
