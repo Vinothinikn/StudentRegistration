@@ -70,7 +70,7 @@ public class StudentController implements StudentInterface{
         
         if (firstName.isEmpty() || lastName.isEmpty() || birthYear.isEmpty()) {
             passwordField.clear();
-            messageLabel.setText("Error: Please enter first and last name and year of birth.");
+            messageLabel.setText("Please enter first and last name and year of birth.");
         } else {
             String temporaryPassword = firstName + "*" + birthYear;
             setPassword(temporaryPassword);
