@@ -1,12 +1,15 @@
 package com.student.studentregister;
 
-import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class StudentDisplayController {
 
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+   @FXML
+    private Label studentInfoLabel;
+
+    public void setStudentInfo(String studentInfo) {
+        studentInfoLabel.setText(studentInfo);
     }
 }

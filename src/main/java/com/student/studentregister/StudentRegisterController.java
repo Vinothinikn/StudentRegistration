@@ -2,8 +2,14 @@ package com.student.studentregister;
 
 import com.student.studentregisterinterface.StudentInterface;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class StudentRegisterController implements StudentInterface{
 
@@ -19,8 +25,13 @@ public class StudentRegisterController implements StudentInterface{
     @FXML
     private TextField passwordField;
     
-     @FXML
+    @FXML
     private Label messageLabel;
+    
+    @FXML
+    private Button registerButton;
+     
+    private boolean isRegistered = false;
      
      @Override
     public String getFirstName() {
@@ -64,6 +75,7 @@ public class StudentRegisterController implements StudentInterface{
 
      @FXML
     private void register() {
+        if (!isRegistered) {
         String firstName = getFirstName();
         String lastName = getLastName();
         String birthYear = getBirthYear();
@@ -75,8 +87,41 @@ public class StudentRegisterController implements StudentInterface{
             String temporaryPassword = firstName + "*" + birthYear;
             setPassword(temporaryPassword);
             messageLabel.setText("Welcome, " + firstName + " "+lastName + "!");
+             isRegistered = true;
+        }
+        if(isRegistered){
+            registerButton.setText("View");
+            registerButton.setOnAction(e -> viewStudentInfo());
+        }
+        }else{
+            viewStudentInfo();
         }
     }
+    
+    private void viewStudentInfo() {
+    try {
+        // Load the FXML for displaying student data
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("studentdisplay.fxml"));
+        Parent root = loader.load();
+
+        // Create a new stage and set it to display the student data
+        Stage stage = new Stage();
+        stage.setTitle("Student Information");
+        stage.setScene(new Scene(root));
+        
+        // Pass the student data to the display controller
+        StudentDisplayController displayController = loader.getController();
+        String studentInfo = "First Name: " + getFirstName() + "\n" +
+                             "Last Name: " + getLastName() + "\n" +
+                             "Year of Birth: " + getBirthYear() + "\n" +
+                             "Temporary Password: " + getPassword();
+        displayController.setStudentInfo(studentInfo);
+
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     @FXML
     private void exit() {
